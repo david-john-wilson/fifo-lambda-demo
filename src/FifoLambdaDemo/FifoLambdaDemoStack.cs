@@ -30,7 +30,7 @@ namespace FifoLambdaDemo
                     "Demo",
                     new QueueProps
                     {                        
-                        QueueName = "demo",
+                        QueueName = "demo.fifo",
                         RetentionPeriod = Duration.Days(14),
                         DeadLetterQueue = 
                             new DeadLetterQueue
@@ -64,7 +64,7 @@ namespace FifoLambdaDemo
                         Code = Code.FromBucket(s3LambdaCodeBucket, "demo-lambda"),
                         Handler = "DemoLambda.Handler",
                         Runtime = Runtime.DOTNET_CORE_2_1,
-                        RetryAttempts = 3,
+                        RetryAttempts = 2,
                         DeadLetterQueueEnabled = true,
                         DeadLetterQueue = sqsDemoError,
                         Timeout = Duration.Seconds(30)
